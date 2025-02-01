@@ -6,6 +6,7 @@ const port = 3500;
 const task = require("./routes/tasks");
 
 // get middeware data
+app.use(express.static("./public"));
 app.use(express.json());
 
 //  routess
