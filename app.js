@@ -15,11 +15,13 @@ app.use(express.json());
 app.use("/api/v1/tasks", task);
 app.use(notfound);
 app.use(errorHandlerMiddleware);
+
+app.listen(port, () => {
+  console.log(`✅ Server started successfully on port ${port}`);
+});
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-
-    app.listen(port, console.log(`Server Started Successfully on ${port}`));
   } catch (error) {
     console.log(error);
   }
