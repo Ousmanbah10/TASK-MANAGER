@@ -1,6 +1,7 @@
 const connectDB = require("./db/connect");
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 3500;
 const task = require("./routes/tasks");
@@ -12,6 +13,7 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 // routes
+app.use(cors());
 app.use("/api/v1/tasks", task);
 app.use(notfound);
 app.use(errorHandlerMiddleware);
